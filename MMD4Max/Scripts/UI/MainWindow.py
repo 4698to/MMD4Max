@@ -1,5 +1,7 @@
 import sys
-sys.path.append(r"D:\Program Files\Autodesk\3ds Max 2015\scripts")
+script = "(getDir #scripts)"
+temp = MaxPlus.Core.EvalMAXScript(script).Get()
+sys.path.append(temp)
 
 from MMD4Max.Scripts.FBXConverter import *
 from MMD4Max.Scripts.FBXImporter import *
@@ -14,7 +16,7 @@ import shutil
 #import threading
 import os
 import glob
-import MaxPlus 
+import MaxPlus
 import ctypes
 
 class _GCProtector(object):
@@ -23,7 +25,7 @@ class _GCProtector(object):
 app = QtGui.QApplication.instance()
 if not app:
 	app = QtGui.QApplication([])
-	
+
 class SuperDuperQList(QtGui.QListView):
 	def __init__(self,arg,parent= None):
 		super(SuperDuperQList, self).__init__(parent)
@@ -137,7 +139,7 @@ class MainWindows(QtGui.QDialog):
 		index_ = self.fbx_List.currentIndex().row()
 		if index_ >= 0 :
 			self.fbxFilePath = self.fbx_List.path[index_]
-			
+
 			if self.__importer.Process(self.fbxFilePath):
 				self.Log(self.fbxFilePath + ' import completed!')
 
@@ -148,7 +150,7 @@ class MainWindows(QtGui.QDialog):
 			self.fbx_List.Model.removeRow(index_)
 		else:
 			self.Log(" No selected")
-			
+
 	def OnDeleteButtonClicked(self):
 		self.DeleteSelectedVmdFile()
 
@@ -176,10 +178,10 @@ class MainWindows(QtGui.QDialog):
 		self.setWindowTitle(u"MMD4Max")
 		self.resize(603, 420)
 		#self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint|QtCore.Qt.WindowCloseButtonHint)
-		
+
 		version_ = MaxPlus.Application
 		version_number =  (version_.Get3DSMAXVersion() >> 16) & 0xffff
-		
+
 		if version_number < 19000:
 			hwnd = self.winId()
 			ctypes.pythonapi.PyCObject_AsVoidPtr.restype = ctypes.c_void_p
@@ -224,7 +226,7 @@ class MainWindows(QtGui.QDialog):
 		self.logText.setFixedHeight(200)
 		self.vbox.addWidget(self.logText,3,1)
 		self.logText.insertPlainText("https://gitee.com/to4698/ND_tools/tree/master/MMD4Max \n")
-		
+
 		#self.logText.setSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
 
 		self.checkBox_chk =  QtGui.QCheckBox(self)
@@ -395,6 +397,5 @@ if __name__ == "__main__":
 	MainWindow = MainWindows()
 	_GCProtector.widgets.append(MainWindow)
 	MainWindow.show()
-	
+
 	#app.exec_()
-	
