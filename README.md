@@ -1,10 +1,13 @@
 # MMD4Max
 
+This is 3dsMax plug-in which use for importing pmx/pmd model to max.
+It is based on pmx2fbx.exe which is wrote by http://stereoarts.jp/
+
 ![](https://gitee.com/to4698/ND_tools/raw/master/MMD4Max/20201206141158.png)
 
 移植于 [MMD4Maya](https://github.com/gameboy12615/MMD4Maya)
 
-3ds Max 2015 - 2016 
+3ds Max 2015 - 2016
 ![](https://gitee.com/to4698/ND_tools/raw/master/MMD4Max/20201206192320.png)
 [演示视频](https://www.bilibili.com/video/BV1xf4y1i7tv/)
 
