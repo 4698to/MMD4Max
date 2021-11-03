@@ -1,8 +1,9 @@
 import sys
-script = "(getDir #scripts)"
-temp = MaxPlus.Core.EvalMAXScript(script).Get()
-sys.path.append(temp)
+temp_path = MaxPlus.PathManager.GetScriptsDir()
+if not temp_path in sys.path :
+	sys.path.append(temp_path)
 
+import MMD4Max
 from MMD4Max.Scripts.FBXConverter import *
 from MMD4Max.Scripts.FBXImporter import *
 from MMD4Max.Scripts.FBXModifier import *
