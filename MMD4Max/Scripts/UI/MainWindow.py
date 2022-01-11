@@ -1,7 +1,10 @@
 import sys
-script = "(getDir #scripts)"
-temp = MaxPlus.Core.EvalMAXScript(script).Get()
-sys.path.append(temp)
+import MaxPlus
+
+temp_path = MaxPlus.PathManager.GetScriptsDir()
+
+if not temp_path in sys.path :
+	sys.path.append(temp_path)
 
 from MMD4Max.Scripts.FBXConverter import *
 from MMD4Max.Scripts.FBXImporter import *
@@ -16,7 +19,7 @@ import shutil
 #import threading
 import os
 import glob
-import MaxPlus
+
 import ctypes
 
 class _GCProtector(object):
