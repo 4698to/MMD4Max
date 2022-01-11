@@ -1,11 +1,16 @@
 import sys
+<<<<<<< HEAD
 import MaxPlus
 
 temp_path = MaxPlus.PathManager.GetScriptsDir()
 
+=======
+temp_path = MaxPlus.PathManager.GetScriptsDir()
+>>>>>>> 59d4cb15bde63ec9be1a62fb3c0003aa1c82675f
 if not temp_path in sys.path :
 	sys.path.append(temp_path)
 
+import MMD4Max
 from MMD4Max.Scripts.FBXConverter import *
 from MMD4Max.Scripts.FBXImporter import *
 from MMD4Max.Scripts.FBXModifier import *
